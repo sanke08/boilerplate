@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google"
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner"
+import Providers from "@/components/provider";
 // import ThemeToggle from "@/components/theme-toggle";
 
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "700"], // Choose available weights
 });
 
 
@@ -25,12 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={jakarta.className}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange        >
+        <Providers>
           {/* <ThemeToggle /> */}
-
           {children}
           <Toaster />
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );
